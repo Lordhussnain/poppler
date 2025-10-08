@@ -22,16 +22,16 @@ jobs:
         run: |
           IMAGE_TAG=${{ github.sha }}
           # Build the image from the Dockerfile at repo root
-          DOCKER_BUILDKIT=1 docker build -t myorg/libra:${IMAGE_TAG} .
+          DOCKER_BUILDKIT=1 docker build -t myorg/poppler:${IMAGE_TAG} .
 
       - name: Save image as TAR
         run: |
           IMAGE_TAG=${{ github.sha }}
-          TAR_PATH="output/libra-${IMAGE_TAG}.tar"
-          docker save myorg/libra:${IMAGE_TAG} -o "$TAR_PATH"
+          TAR_PATH="output/poppler-${IMAGE_TAG}.tar"
+          docker save myorg/poppler:${IMAGE_TAG} -o "$TAR_PATH"
 
       - name: Upload TAR as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: libra-tar
+          name: poppler-tar
           path: output/
