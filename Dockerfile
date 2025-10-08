@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends poppler-utils i
 RUN useradd -m -s /bin/bash appuser
 WORKDIR /home/appuser
 USER appuser
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm ci --production
 COPY . .
 CMD ["node", "worker.js"]
